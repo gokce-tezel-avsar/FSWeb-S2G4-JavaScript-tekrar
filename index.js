@@ -70,7 +70,7 @@ console.log(CemberinCevresi(5));
 */
 
 function CemberinAlani(cemberinYaricapi, pi) {
- return pi * Math.pow(yaricap,2)
+ return pi * Math.pow(cemberinYaricapi,2)
 }
 console.log(CemberinAlani(15));
 
@@ -100,18 +100,11 @@ console.log(CemberinAlani(15));
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 
-let ucetambolunenler,
-  enkucuk,
-  enbuyuk,
-  ucebolunenlerintoplami,
-  besyuzdenkucuksayilar,
-  siralisayilar,
-  tekraredensayilar;
+
 
 // 3a çözümü
-let enbuyuk = sayilar[0];
-let enkucuk = sayilar[0];
-
+let enkucuk = [];
+let enbuyuk = [];
 for (let i = 1; i < sayilar.length; i++) {
 if (sayilar[i] > enbuyuk) {
     enbuyuk = sayilar[i];

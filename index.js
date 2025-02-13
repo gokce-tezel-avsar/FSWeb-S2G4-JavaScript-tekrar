@@ -36,9 +36,14 @@ const sayilar = [
 */
 
 //Örneğin çözümü:
-function KareninAlani(kenaruzunlugu) {
-  return kenaruzunlugu * kenaruzunlugu;
-}
+function KareninAlani(kenarUzunlugu) {  
+  return kenarUzunlugu * kenarUzunlugu;
+} 
+console.log(KareninAlani(10))
+
+
+
+  
 
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -50,10 +55,10 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi (cemberinYaricapi) {
+ return 2 * pi * cemberinYaricapi;
 }
-
+console.log(CemberinCevresi(5));
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
 /* 	GÖREV 2:  
@@ -64,19 +69,25 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(cemberinYaricapi, pi) {
+ return pi * Math.pow(yaricap,2)
 }
+console.log(CemberinAlani(15));
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
 /* 	GÖREV 3:
 	- Sayfanın en üstünde global değişken olarak tanımlanmış bir sayilar dizisi bulunmaktadır. Bu dizi içinde 0 ile 1000 arasında rasgele oluşturulmuş tam sayılar ve ondalıklı sayılar bulunmaktadır. Bu diziyi kullanarak aşağıdakileri uygulayın:
 		3a. enbuyuk ve enkucuk isminde 2 adet değişken tanımlayın ve sayilar dizisindeki en küçük sayı ile en büyük sayıyı bu değişkenlere atayın. (for döngüsü kullanın)
-		
-		3b. `ucetambolunenler` adında bir dizi tanımlayın ve bu diziye sayilar dizisindeki 3'ün tam katı olan sayıları atayın (.forEach metodunu kullanın)
+    
+   
+    
+    3b. `ucetambolunenler` adında bir dizi tanımlayın ve bu diziye sayilar dizisindeki 3'ün tam katı olan sayıları atayın (.forEach metodunu kullanın)
+
 		
 		3c. `ucetambolunenler` dizisindeki sayıların toplamını .reduce metoduyla bulup, sonucu `ucebolunenlerintoplami` değişkenine yazdırın (.reduce metodunu kullanın)
+   
+
 		
 		3d. `besyuzdenkucuksayilar` adında bir dizi oluşturarak, sayilar dizisinin içindeki 500'den küçük sayıları bu diziye atayın (.filter metodunu kullanın)
 		
@@ -98,28 +109,56 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
+let enbuyuk = sayilar[0];
+let enkucuk = sayilar[0];
 
-/* kodlar buraya */
+for (let i = 1; i < sayilar.length; i++) {
+if (sayilar[i] > enbuyuk) {
+    enbuyuk = sayilar[i];
+}
+if (sayilar[i] < enkucuk) {
+    enkucuk = sayilar[i];
+}
+}
 
 // 3b çözümü:
 
-/* kodlar buraya */
+sayilar.forEach(sayi => {
+  let ucetambolunenler = [];
+    if (sayi % 3 === 0) {
+      ucetambolunenler.push(sayi);
+    } else {
+        console.log("Sayı üçün katı değil")
+    }
+});
 
 // 3c çözümü:
+const topla = (toplam, sayi) => toplam + sayi;
+const ucebolunenlerintoplami = ucetambolunenler.reduce(topla, 0);
 
-/* kodlar buraya */
 
 // 3d çözümü
+let besyuzdenkucuksayilar = sayilar.filter(sayi => sayi < 500);
 
-/* kodlar buraya */
 
-// 3e çözümü
+const siralisayilar = [...besyuzdenkucuksayilar];
+siralisayilar.sort((a,b) => a-b);
+console.log(siralisayilar);
 
-/* kodlar buraya */
 
 // 3f çözümü
+const tekrarSayilari = {}; // Sayıların kaç kez tekrarlandığını tutan nesne
+const tekraredensayilar = []; 
+sayilar.forEach(sayi => {
+  tekrarSayilari[sayi] = (tekrarSayilari[sayi] || 0) + 1;
+});
 
-/* kodlar buraya */
+for (const [sayi, tekrar] of Object.entries(tekrarSayilari)) {
+  if (tekrar > 1) { // Sadece tekrar eden sayıları ekleyelim
+      tekraredensayilar.push(`${sayi} sayısı ${tekrar} kere tekrar edilmiştir`);
+  }
+}
+
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
